@@ -1,0 +1,25 @@
+let forwardStack = new Stack;
+let backStack = new Stack;
+
+loadPage(currentURL, nextURL){
+    if (backStack.isEmpty()){
+        disable back button;
+    }else{
+        backStack.push(currentURL);
+    }
+    load(nextURL);
+    enable back button;
+}
+
+backPage(currentURL){
+    forwardStack.push(currentURL);
+    load(backStack.pop());
+    enable forward button;
+}
+
+forwardPage(){
+    load(forwardStack.pop());
+    if (forwardStack.isEmpty()){
+        disable forward button;
+    }
+}
